@@ -3,9 +3,11 @@ import json
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow # type: ignore
-from googleapiclient.discovery import build # type: ignore
+from googleapiclient.discovery import build, Resource # type: ignore
 from googleapiclient.errors import HttpError
-
+from collections.abc import Iterator
+from datetime import datetime, timedelta
+import requests
 # Jika Anda mengubah cakupan (scopes) ini, hapus file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 TIMEZONE = 'Asia/Jakarta'
@@ -20,7 +22,7 @@ def authenticate_google_calendar():
     Fungsi ini akan membuka browser untuk login saat pertama kali dijalankan.
     Setelah itu, kredensial akan disimpan di 'token.json' untuk penggunaan selanjutnya.
     """
-    creds = None
+    creds: Credentials | None = None
 
     if os.path.exists(TOKEN_FILE):
         creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
@@ -93,19 +95,99 @@ def load_events_from_file(filename: str) -> list | None:
         return None
 
 
+def daterange(start_date: datetime, end_date: datetime) -> Iterator[datetime]:
+    for n in range(int((end_date - start_date).days) + 1):
+        yield start_date + timedelta(days=n)
+
 def insert_events(service, filename: str, use_datetime: bool = False):
     """
     Membaca acara dari file JSON dan menambahkannya ke Google Calendar.
     """
     print(f"Memuat acara dari '{filename}' ke kalender '{CALENDAR_ID}'...")
-    events = load_events_from_file(filename)
-    if events is None:
-        return
 
-    for event_data in events:
-        create_event(service, event_data, use_datetime=use_datetime)
+    if use_datetime == False:
+        # events.json: objek dengan key 'agenda_akademik', tiap item pakai 'kegiatan' bukan 'summary'
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except FileNotFoundError:
+            print(f"Error: File '{filename}' tidak ditemukan.")
+            return
+        except json.JSONDecodeError:
+            print(f"Error: Gagal mem-parsing '{filename}'. Pastikan formatnya benar.")
+            return
 
-    print(f"\nSelesai memproses {len(events)} acara dari '{filename}'.")
+        agenda = data.get('agenda_akademik', [])
+        if not agenda:
+            print(f"Error: '{filename}' tidak berisi agenda yang valid atau kosong.")
+            return
+
+        print("Tipe acara: Seharian penuh (date)")
+        for item in agenda:
+            event_data = {
+                'summary': item['kegiatan'],
+                'start': item['start'],
+                'end': item['end'],
+            }
+            create_event(service, event_data, use_datetime=False)
+        print(f"\nSelesai memproses {len(agenda)} acara dari '{filename}'.")
+    else:
+        # matkul.json: array objek dengan 'nama_mata_kuliah' dan nested 'jadwal'
+        # dengan hari dalam bahasa Indonesia dan waktu pakai titik (e.g. "15.30")
+        events = load_events_from_file(filename)
+        if events is None:
+            return
+
+        day_map = {
+            'SENIN': 'Monday', 'SELASA': 'Tuesday', 'RABU': 'Wednesday',
+            'KAMIS': 'Thursday', 'JUMAT': 'Friday', 'SABTU': 'Saturday', 'MINGGU': 'Sunday',
+        }
+
+        # Ambil rentang tanggal perkuliahan dari events.json (format baru)
+        try:
+            with open('events.json', 'r', encoding='utf-8') as f:
+                cal_data = json.load(f)
+            agenda = cal_data.get('agenda_akademik', [])
+            start_str = next((i['start'] for i in agenda if i['kegiatan'] == 'Awal Perkuliahan 1 Genap'), None)
+            end_str = next((i['start'] for i in agenda if i['kegiatan'] == 'Akhir Perkuliahan 2 Genap'), None)
+        except Exception as e:
+            print(f"Error membaca 'events.json': {e}")
+            return
+
+        if not start_str or not end_str:
+            print("Error: Tidak dapat menemukan tanggal perkuliahan di 'events.json'.")
+            return
+
+        start_date: datetime = datetime.strptime(start_str, "%Y-%m-%d")
+        end_date: datetime = datetime.strptime(end_str, "%Y-%m-%d")
+        print("Tipe acara: Waktu spesifik (dateTime)")
+        print(f"Rentang perkuliahan: {start_date.date()} s/d {end_date.date()}")
+
+        for single_date in daterange(start_date, end_date):
+            day_en = single_date.strftime("%A")
+            try:
+                response = requests.get(f"https://libur.deno.dev/api?year={single_date.year}&month={single_date.month}&day={single_date.day}")
+                if response.status_code == 200 and response.json().get("is_holiday", False):
+                    print(f"Melewatkan hari libur: {single_date.strftime('%Y-%m-%d')}")
+                    continue
+            except requests.RequestException as e:
+                print(f"Peringatan: Gagal mengecek hari libur untuk {single_date.strftime('%Y-%m-%d')}: {e}")
+
+            for matkul in events:
+                jadwal = matkul['jadwal']
+                if day_map.get(jadwal['hari'], '') == day_en:
+                    start_time_str = jadwal['start'].replace('.', ':')
+                    end_time_str = jadwal['end'].replace('.', ':')
+                    start_matkul = datetime.combine(single_date, datetime.strptime(start_time_str, "%H:%M").time())
+                    end_matkul = datetime.combine(single_date, datetime.strptime(end_time_str, "%H:%M").time())
+                    event_data = {
+                        'summary': matkul['nama_mata_kuliah'],
+                        'description': matkul.get('kode_mk', ''),
+                        'start': start_matkul.isoformat(),
+                        'end': end_matkul.isoformat(),
+                    }
+                    create_event(service, event_data, use_datetime=True)
+        print(f"\nSelesai memproses {len(events)} mata kuliah dari '{filename}'.")
 
 
 def main():
@@ -113,6 +195,7 @@ def main():
     Fungsi utama: autentikasi lalu tampilkan menu untuk memilih jenis acara yang akan ditambahkan.
     """
     service = authenticate_google_calendar()
+
     if not service:
         print("Proses dihentikan karena autentikasi gagal.")
         return

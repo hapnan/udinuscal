@@ -1,206 +1,238 @@
-[
-  {
-    "summary": "Her Registrasi & Pembayaran UKP/BKS (Gasal)",
-    "start": "2025-08-11",
-    "end": "2025-08-12",
-    "description": ""
-  },
-  {
-    "summary": "Permohonan Izin Cuti Akademik (Gasal)",
-    "start": "2025-09-22",
-    "end": "2025-09-23",
-    "description": ""
-  },
-  {
-    "summary": "Konsultasi dan Perwalian (Gasal)",
-    "start": "2025-08-18",
-    "end": "2025-08-23",
-    "description": ""
-  },
-  {
-    "summary": "Input Rencana Studi (IRS) (Gasal)",
-    "start": "2025-08-26",
-    "end": "2025-08-30",
-    "description": ""
-  },
-  {
-    "summary": "Revisi & Verifikasi KRS Mahasiswa (Gasal)",
-    "start": "2025-09-01",
-    "end": "2025-09-06",
-    "description": ""
-  },
-  {
-    "summary": "Dinus Inside, Expo & Inaugurasi",
-    "start": "2025-09-08",
-    "end": "2025-09-12",
-    "description": ""
-  },
-  {
-    "summary": "Pembayaran Uang SKS / BKS (Gasal)",
-    "start": "2025-10-20",
-    "end": "2025-10-21",
-    "description": ""
-  },
-  {
-    "summary": "Ujian Tengah Semester (UTS) Gasal",
-    "start": "2025-11-03",
-    "end": "2025-11-16",
-    "description": ""
-  },
-  {
-    "summary": "Kuliah Tambahan Pengganti (Gasal)",
-    "start": "2026-01-05",
-    "end": "2026-01-11",
-    "description": ""
-  },
-  {
-    "summary": "Ujian Akhir Semester (UAS) Gasal",
-    "start": "2026-01-12",
-    "end": "2026-01-25",
-    "description": ""
-  },
-  {
-    "summary": "Batas Akhir Entri Nilai UAS Gasal",
-    "start": "2026-01-29",
-    "end": "2026-01-30",
-    "description": ""
-  },
-  {
-    "summary": "Pengumuman Hasil UAS & Remedial (Gasal)",
-    "start": "2026-01-30",
-    "end": "2026-01-31",
-    "description": ""
-  },
-  {
-    "summary": "Remedial (Gasal)",
-    "start": "2026-02-02",
-    "end": "2026-02-13",
-    "description": ""
-  },
-  {
-    "summary": "Batas Akhir Entri Nilai Remedial (Gasal)",
-    "start": "2026-02-12",
-    "end": "2026-02-14",
-    "description": ""
-  },
-  {
-    "summary": "Batas Akhir Pelaporan PDDIKTI (Gasal)",
-    "start": "2026-03-31",
-    "end": "2026-04-01",
-    "description": ""
-  },
-  {
-    "summary": "Her Registrasi & Pembayaran UKP/BKS (Genap)",
-    "start": "2026-02-02",
-    "end": "2026-02-03",
-    "description": ""
-  },
-  {
-    "summary": "Permohonan Izin Cuti Akademik (Genap)",
-    "start": "2026-03-09",
-    "end": "2026-03-10",
-    "description": ""
-  },
-  {
-    "summary": "Konsultasi dan Perwalian (Genap)",
-    "start": "2026-02-09",
-    "end": "2026-02-14",
-    "description": ""
-  },
-  {
-    "summary": "Input Rencana Studi (IRS) (Genap)",
-    "start": "2026-02-17",
-    "end": "2026-02-21",
-    "description": ""
-  },
-  {
-    "summary": "Revisi & Verifikasi KRS Mahasiswa (Genap)",
-    "start": "2026-02-23",
-    "end": "2026-02-28",
-    "description": ""
-  },
-  {
-    "summary": "Pembayaran Uang SKS / BKS (Genap)",
-    "start": "2026-04-13",
-    "end": "2026-04-14",
-    "description": ""
-  },
-  {
-    "summary": "Ujian Tengah Semester (UTS) Genap",
-    "start": "2026-04-27",
-    "end": "2026-05-10",
-    "description": ""
-  },
-  {
-    "summary": "Kuliah Tambahan Pengganti (Genap)",
-    "start": "2026-06-29",
-    "end": "2026-07-05",
-    "description": ""
-  },
-  {
-    "summary": "Ujian Akhir Semester (UAS) Genap",
-    "start": "2026-07-06",
-    "end": "2026-07-19",
-    "description": ""
-  },
-  {
-    "summary": "Batas Akhir Entri Nilai UAS Genap",
-    "start": "2026-07-23",
-    "end": "2026-07-24",
-    "description": ""
-  },
-  {
-    "summary": "Pengumuman Hasil UAS Genap",
-    "start": "2026-07-24",
-    "end": "2026-07-25",
-    "description": ""
-  },
-  {
-    "summary": "Batas Akhir Pelaporan PDDIKTI (Genap)",
-    "start": "2026-09-30",
-    "end": "2026-10-01",
-    "description": ""
-  },
-  {
-    "summary": "Semester Antara (SA)",
-    "start": "2026-07-27",
-    "end": "2026-08-16",
-    "description": ""
-  },
-  {
-    "summary": "Batas Akhir Entri Nilai SA",
-    "start": "2026-08-20",
-    "end": "2026-08-21",
-    "description": ""
-  },
-  {
-    "summary": "Pengumuman Hasil SA",
-    "start": "2026-08-21",
-    "end": "2026-08-22",
-    "description": ""
-  },
-  {
-    "summary": "Wisuda ke-86",
-    "start": "2025-11-26",
-    "end": "2025-11-27",
-    "description": "Yudisium terakhir maksimal 31-10-2025"
-  },
-  {
-    "summary": "Wisuda ke-87",
-    "start": "2026-02-25",
-    "end": "2026-02-26",
-    "description": "Yudisium terakhir maksimal 30-01-2026"
-  },
-  {
-    "summary": "Wisuda ke-88",
-    "start": "2026-05-26",
-    "end": "2026-05-27",
-    "description": "Yudisium terakhir maksimal 30-04-2026"
-  },
-  {
-    "summary": "Wisuda ke-89",
-    "start": "2026-08-26",
-    "end": "2026-08-27",
-    "description": "Yudisium terakhir maksimal 31-07-2026"
-  }
-]
+{
+  "universitas": "Universitas Dian Nuswantoro",
+  "tahun_akademik": "2025/2026",
+  "alamat": "JL. Imam Bonjol No. 207 Semarang",
+  "kontak": "(024) 3517261",
+  "agenda_akademik": [
+    {
+      "kegiatan": "Batas Her-Registrasi & Pembayaran Gasal",
+      "start": "2025-08-11",
+      "end": "2025-08-11"
+    },
+    {
+      "kegiatan": "Konsultasi & Perwalian Gasal",
+      "start": "2025-08-18",
+      "end": "2025-08-22"
+    },
+    {
+      "kegiatan": "Input Rencana Studi Gasal",
+      "start": "2025-08-26",
+      "end": "2025-08-29"
+    },
+    {
+      "kegiatan": "Pendaftaran Wisuda Periode 86",
+      "start": "2025-09-17",
+      "end": "2025-09-17"
+    },
+    {
+      "kegiatan": "Revisi & Verifikasi KRS Mahasiswa Gasal",
+      "start": "2025-09-01",
+      "end": "2025-09-05"
+    },
+    {
+      "kegiatan": "Dinus Inside, Expo & Inaugurasi",
+      "start": "2025-09-08",
+      "end": "2025-09-11"
+    },
+    {
+      "kegiatan": "Awal Perkuliahan 1 Gasal",
+      "start": "2025-09-15",
+      "end": "2025-09-15"
+    },
+    {
+      "kegiatan": "Batas Permohonan Izin Cuti Akademik Gasal",
+      "start": "2025-09-22",
+      "end": "2025-09-22"
+    },
+    {
+      "kegiatan": "Maksimal Yudisium Wisuda Periode 86",
+      "start": "2025-10-17",
+      "end": "2025-10-17"
+    },
+    {
+      "kegiatan": "Batas Pembayaran Uang SKS/BKS Gasal",
+      "start": "2025-10-20",
+      "end": "2025-10-20"
+    },
+    {
+      "kegiatan": "Akhir Perkuliahan 1 Gasal",
+      "start": "2025-11-01",
+      "end": "2025-11-01"
+    },
+    {
+      "kegiatan": "Ujian Tengah Semester (UTS) Gasal",
+      "start": "2025-11-03",
+      "end": "2025-11-15"
+    },
+    {
+      "kegiatan": "Awal Perkuliahan 2 Gasal",
+      "start": "2025-11-17",
+      "end": "2025-11-17"
+    },
+    {
+      "kegiatan": "Pelaksanaan Wisuda Periode 86",
+      "start": "2025-11-26",
+      "end": "2025-11-27"
+    },
+    {
+      "kegiatan": "Pendaftaran Wisuda Periode 87",
+      "start": "2025-12-17",
+      "end": "2025-12-17"
+    },
+    {
+      "kegiatan": "Perkuliahan 2 Gasal",
+      "start": "2025-12-01",
+      "end": "2025-12-31"
+    },
+    {
+      "kegiatan": "Akhir Perkuliahan 2 Gasal",
+      "start": "2026-01-03",
+      "end": "2026-01-03"
+    },
+    {
+      "kegiatan": "Kuliah Tambahan/Pengganti Gasal",
+      "start": "2026-01-04",
+      "end": "2026-01-10"
+    },
+    {
+      "kegiatan": "Ujian Akhir Semester (UAS) Gasal",
+      "start": "2026-01-12",
+      "end": "2026-01-24"
+    },
+    {
+      "kegiatan": "Maksimal Yudisium Wisuda Periode 87",
+      "start": "2026-01-16",
+      "end": "2026-01-16"
+    },
+    {
+      "kegiatan": "Batas Akhir Entri Nilai UAS Gasal",
+      "start": "2026-01-29",
+      "end": "2026-01-29"
+    },
+    {
+      "kegiatan": "Pengumuman Hasil UAS Gasal Tahap 1",
+      "start": "2026-01-30",
+      "end": "2026-01-30"
+    },
+    {
+      "kegiatan": "Batas Her-Registrasi & Pembayaran Genap",
+      "start": "2026-02-02",
+      "end": "2026-02-02"
+    },
+    {
+      "kegiatan": "Remedial",
+      "start": "2026-02-02",
+      "end": "2026-02-12"
+    },
+    {
+      "kegiatan": "Konsultasi & Perwalian Genap",
+      "start": "2026-02-09",
+      "end": "2026-02-13"
+    },
+    {
+      "kegiatan": "Batas Akhir Entri Nilai Remedial",
+      "start": "2026-02-12",
+      "end": "2026-02-13"
+    },
+    {
+      "kegiatan": "Input Rencana Studi Genap",
+      "start": "2026-02-17",
+      "end": "2026-02-20"
+    },
+    {
+      "kegiatan": "Revisi & Verifikasi KRS Mahasiswa Genap",
+      "start": "2026-02-23",
+      "end": "2026-02-27"
+    },
+    {
+      "kegiatan": "Pelaksanaan Wisuda Periode 87",
+      "start": "2026-02-25",
+      "end": "2026-02-26"
+    },
+    {
+      "kegiatan": "Awal Perkuliahan 1 Genap",
+      "start": "2026-03-02",
+      "end": "2026-03-02"
+    },
+    {
+      "kegiatan": "Batas Permohonan Izin Cuti Akademik Genap",
+      "start": "2026-03-09",
+      "end": "2026-03-09"
+    },
+    {
+      "kegiatan": "Pendaftaran Wisuda Periode 88",
+      "start": "2026-03-18",
+      "end": "2026-03-18"
+    },
+    {
+      "kegiatan": "Batas Pembayaran Uang SKS/BKS Genap",
+      "start": "2026-04-13",
+      "end": "2026-04-13"
+    },
+    {
+      "kegiatan": "Maksimal Yudisium Wisuda Periode 88",
+      "start": "2026-04-17",
+      "end": "2026-04-17"
+    },
+    {
+      "kegiatan": "Akhir Perkuliahan 1 Genap",
+      "start": "2026-04-25",
+      "end": "2026-04-25"
+    },
+    {
+      "kegiatan": "Ujian Tengah Semester (UTS) Genap",
+      "start": "2026-04-27",
+      "end": "2026-05-09"
+    },
+    {
+      "kegiatan": "Awal Perkuliahan 2 Genap",
+      "start": "2026-05-11",
+      "end": "2026-05-11"
+    },
+    {
+      "kegiatan": "Pelaksanaan Wisuda Periode 88",
+      "start": "2026-05-20",
+      "end": "2026-05-21"
+    },
+    {
+      "kegiatan": "Pendaftaran Wisuda Periode 89",
+      "start": "2026-06-17",
+      "end": "2026-06-17"
+    },
+    {
+      "kegiatan": "Akhir Perkuliahan 2 Genap",
+      "start": "2026-06-27",
+      "end": "2026-06-27"
+    },
+    {
+      "kegiatan": "Kuliah Tambahan/Pengganti Genap",
+      "start": "2026-06-29",
+      "end": "2026-06-29"
+    },
+    {
+      "kegiatan": "Ujian Akhir Semester (UAS) Genap",
+      "start": "2026-07-06",
+      "end": "2026-07-18"
+    },
+    {
+      "kegiatan": "Maksimal Yudisium Wisuda Periode 89",
+      "start": "2026-07-17",
+      "end": "2026-07-17"
+    },
+    {
+      "kegiatan": "Batas Akhir Entri Nilai UAS Genap",
+      "start": "2026-07-23",
+      "end": "2026-07-23"
+    },
+    {
+      "kegiatan": "Pengumuman Hasil UAS Genap",
+      "start": "2026-07-24",
+      "end": "2026-07-24"
+    },
+    {
+      "kegiatan": "Pelaksanaan Wisuda Periode 89",
+      "start": "2026-08-26",
+      "end": "2026-08-27"
+    }
+  ]
+}

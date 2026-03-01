@@ -1,0 +1,93 @@
+[
+  {
+    "no": 1,
+    "kode_mk": "A18.11401",
+    "nama_mata_kuliah": "OTOMATA DAN TEORI BAHASA",
+    "sks": 3,
+    "kelompok": "A18.1401",
+    "jadwal": {
+      "hari": "RABU",
+      "start": "15.30",
+      "end": "18.00",
+      "ruang": "Kulino"
+    }
+  },
+  {
+    "no": 2,
+    "kode_mk": "A18.11403",
+    "nama_mata_kuliah": "STRATEGI ALGORITMA",
+    "sks": 3,
+    "kelompok": "A18.1401",
+    "jadwal": {
+      "hari": "KAMIS",
+      "start": "15.30",
+      "end": "18.00",
+      "ruang": "Kulino"
+    }
+  },
+  {
+    "no": 3,
+    "kode_mk": "A18.11602",
+    "nama_mata_kuliah": "PEMBELAJARAN MESIN",
+    "sks": 3,
+    "kelompok": "A18.1601",
+    "jadwal": {
+      "hari": "SENIN",
+      "start": "12.30",
+      "end": "15.00",
+      "ruang": "Kulina"
+    }
+  },
+  {
+    "no": 4,
+    "kode_mk": "A18.11603",
+    "nama_mata_kuliah": "TATA TULIS KARYA ILMIAH",
+    "sks": 2,
+    "kelompok": "A18.1601",
+    "jadwal": {
+      "hari": "RABU",
+      "start": "07.00",
+      "end": "08.40",
+      "ruang": "Kulina"
+    }
+  },
+  {
+    "no": 5,
+    "kode_mk": "A18.11613",
+    "nama_mata_kuliah": "CRYPTOGRAPHY AND NETWORK SECURITY",
+    "sks": 3,
+    "kelompok": "A18.1601",
+    "jadwal": {
+      "hari": "RABU",
+      "start": "12.30",
+      "end": "15.00",
+      "ruang": "Kulino"
+    }
+  },
+  {
+    "no": 6,
+    "kode_mk": "N201702",
+    "nama_mata_kuliah": "BAHASA INGGRIS",
+    "sks": 2,
+    "kelompok": "A18.1601",
+    "jadwal": {
+      "hari": "SELASA",
+      "start": "08.40",
+      "end": "10.20",
+      "ruang": "Kulino"
+    }
+  },
+  {
+    "no": 7,
+    "kode_mk": "0201701",
+    "nama_mata_kuliah": "DASAR KEWIRAUSAHAAN",
+    "sks": 2,
+    "kelompok": "A18.1401",
+    "jadwal": {
+      "hari": "KAMIS",
+      "start": "08.40",
+      "end": "10.20",
+      "ruang": "Kulino"
+    }
+  }
+]
