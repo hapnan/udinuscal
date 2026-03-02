@@ -14,7 +14,7 @@ Menambahkan kalender akademik dan jadwal mata kuliah Universitas Dian Nuswantoro
 2. Buat project baru (atau gunakan yang sudah ada)
 3. Aktifkan [**Google Calendar API**](https://console.cloud.google.com/flows/enableapi?apiid=calendar-json.googleapis.com)
 4. Buat [**OAuth 2.0 Client ID**](https://developers.google.com/workspace/calendar/api/quickstart/python#configure_the_oauth_consent_screen) (tipe: *Desktop app*)
-5. Authorize credentials untuk aplikasi [dekstop](https://developers.google.com/workspace/calendar/api/quickstart/python#authorize_credentials_for_a_desktop_application)  
+5. Authorize credentials untuk aplikasi [Dekstop](https://developers.google.com/workspace/calendar/api/quickstart/python#authorize_credentials_for_a_desktop_application)  
 5. Unduh file kredensial dan simpan sebagai `credentials.json` di folder yang sama dengan `main.py`
 
 Saat pertama kali dijalankan, browser akan terbuka untuk otorisasi akun Google Anda. Token akan disimpan otomatis di `token.json` untuk sesi berikutnya.
