@@ -4,7 +4,7 @@ import logging
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow # type: ignore
-from googleapiclient.discovery import build, Resource # type: ignore
+from googleapiclient.discovery import build # type: ignore
 from googleapiclient.errors import HttpError
 from collections.abc import Iterator
 from datetime import datetime, timedelta
@@ -12,7 +12,6 @@ import requests
 # Jika Anda mengubah cakupan (scopes) ini, hapus file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 TIMEZONE = 'Asia/Jakarta'
-CALENDAR_ID = 'primary'
 TOKEN_FILE = 'token.json'
 CREDENTIALS_FILE = 'credentials.json'
 LOG_FILE = 'udinuscal.log'
@@ -71,7 +70,7 @@ def authenticate_google_calendar():
         return None
 
 
-def create_event(service, event_data, use_datetime: bool = False):
+def create_event(service, event_data, use_datetime: bool = False, color_id: str = '1', calendar_id: str = ""):
     """
     Membuat satu acara baru di Google Calendar.
     Gunakan use_datetime=True untuk acara dengan waktu spesifik (dateTime),
@@ -81,11 +80,13 @@ def create_event(service, event_data, use_datetime: bool = False):
     event = {
         'summary': event_data['summary'],
         'description': event_data.get('description', ''),
+        'location': event_data.get('location', ''),
         'start': {time_key: event_data['start'], 'timeZone': TIMEZONE},
         'end': {time_key: event_data['end'], 'timeZone': TIMEZONE},
+        'colorId': color_id,
     }
     try:
-        created = service.events().insert(calendarId=CALENDAR_ID, body=event).execute()
+        created = service.events().insert(calendarId=calendar_id , body=event).execute()
         logger.info(f"Berhasil: '{event['summary']}' -> {created.get('htmlLink')}")
     except HttpError as error:
         logger.error(f"Gagal membuat '{event['summary']}': {error}")
@@ -115,13 +116,46 @@ def daterange(start_date: datetime, end_date: datetime) -> Iterator[datetime]:
     for n in range(int((end_date - start_date).days) + 1):
         yield start_date + timedelta(days=n)
 
+def create_calendar_if_not_exists(service, calendar_name: str):
+    """
+    Membuat kalender baru dengan nama tertentu jika belum ada.
+    Mengembalikan ID kalender yang sudah ada atau yang baru dibuat.
+    """
+    try:
+        calendar_list = service.calendarList().list().execute()
+        for calendar in calendar_list.get('items', []):
+            if calendar.get('summary') == calendar_name:
+                logger.info(f"Kalender '{calendar_name}' sudah ada. Menggunakan kalender ini.")
+                return calendar.get('id')
+
+        logger.info(f"Kalender '{calendar_name}' tidak ditemukan. Membuat kalender baru...")
+        
+        new_calendar = {
+            'summary': calendar_name,
+            'timeZone': TIMEZONE,
+        }
+
+        created_calendar = service.calendars().insert(body=new_calendar).execute()
+        logger.info(f"Kalender '{calendar_name}' berhasil dibuat.")
+        return created_calendar.get('id')
+    except HttpError as error:
+        logger.error(f"Gagal memeriksa atau membuat kalender: {error}")
+        return None
+
 def insert_events(service, filename: str, use_datetime: bool = False):
     """
     Membaca acara dari file JSON dan menambahkannya ke Google Calendar.
     """
-    logger.info(f"Memuat acara dari '{filename}' ke kalender '{CALENDAR_ID}'...")
-
+    
     if use_datetime == False:
+        
+        calender_id = create_calendar_if_not_exists(service, "Kalender Akademik")
+        if not calender_id:
+            logger.error("Proses dihentikan karena gagal mendapatkan atau membuat kalender.")
+            return
+
+        logger.info(f"Memuat acara dari '{filename}' ke kalender '{calender_id}'...")
+
         # events.json: objek dengan key 'agenda_akademik', tiap item pakai 'kegiatan' bukan 'summary'
         try:
             with open(filename, 'r', encoding='utf-8') as f:
@@ -152,11 +186,17 @@ def insert_events(service, filename: str, use_datetime: bool = False):
                     'start': item['start'],
                     'end': (datetime.strptime(item['end'], "%Y-%m-%d") + timedelta(days=1)).strftime("%Y-%m-%d"),
                 }
-            create_event(service, event_data, use_datetime=False)
+            create_event(service, event_data, use_datetime=False, calendar_id=calender_id)
         logger.info(f"Selesai memproses {len(agenda)} acara dari '{filename}'.")
     else:
         # matkul.json: array objek dengan 'nama_mata_kuliah' dan nested 'jadwal'
         # dengan hari dalam bahasa Indonesia dan waktu pakai titik (e.g. "15.30")
+        calender_id = create_calendar_if_not_exists(service, "Jadwal Mata Kuliah")
+        if not calender_id:
+            logger.error("Proses dihentikan karena gagal mendapatkan atau membuat kalender.")
+            return
+
+        logger.info(f"Memuat acara dari '{filename}' ke kalender '{calender_id}'...")
         events = load_events_from_file(filename)
         if events is None:
             return
@@ -214,8 +254,9 @@ def insert_events(service, filename: str, use_datetime: bool = False):
                         'description': matkul.get('kode_mk', ''),
                         'start': start_matkul.isoformat(),
                         'end': end_matkul.isoformat(),
-                    }
-                    create_event(service, event_data, use_datetime=True)
+                        'location': "https://kulino-pjj.dinus.ac.id/",
+                    } 
+                    create_event(service, event_data, use_datetime=True, color_id='3', calendar_id=calender_id)
         logger.info(f"Selesai memproses {len(events)} mata kuliah dari '{filename}'.")
 
 
